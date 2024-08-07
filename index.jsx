@@ -186,7 +186,13 @@ const index = () => {
             setCityVal(citypair);
             handleSetDept(coroute?.substring(3, 6));
             setSelectedSidValue("")
-            setSelectedSidValue("")
+            setSelectedStarValue("")
+            setSid("")
+            setStar("")
+            setStarRwy("")
+            setSidTrans("")
+            setStarTrans("")
+            setSidRwy("")
         }
     };
 
@@ -622,6 +628,10 @@ console.log(printSet  && mainFltPlan != null && error == '',printSet,mainFltPlan
         setFlightPlanSelected(false);
         setSelectedSidValue("")
         setSelectedStarValue("")
+        setCheckedBoxes((prev)=>({
+            notams: false,
+            weather: false,
+          }))
 
     };
     const handleSEttings = () => {
@@ -1336,7 +1346,7 @@ console.log(printSet  && mainFltPlan != null && error == '',printSet,mainFltPlan
                                     id="extra-basic"
                                     variant="outlined"
                                     onChange={handleChange}
-                                    value={formData.route}
+                                    // value={formData.route}
                                     name="route"
                                     sx={{ width: '100%' }}
                                     autoComplete="off"
@@ -1668,6 +1678,7 @@ control={
     name="notams"
     checked={checkedBoxes.notams}
     onChange={handleCheckboxChange}
+    disabled={!edit}
   />
 }
 label="NOTAMS"
@@ -1678,6 +1689,7 @@ control={
     name="weather"
     checked={checkedBoxes.weather}
     onChange={handleCheckboxChange}
+    disabled={!edit}
   />
 }
 label="WEATHER"
@@ -2269,7 +2281,7 @@ label="WEATHER"
                                     OFC
                                 </Button>
                             </Grid>
-                            <Grid item xs={2} sm={4} md={0.8} lg={0.7} xl={0.5}>
+                            <Grid >
                                 <Button variant="contained" style={{ backgroundColor: '#6699CC', marginTop: 4 }} size="small">
                                     EMAIL
                                 </Button>
